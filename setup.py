@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 
-with open('README.rst') as f:
+with open('README.md') as f:
     readme = f.read()
 
 with open('LICENSE') as f:
@@ -14,6 +14,7 @@ setup(
     version='0.1.0',
     description='Create terraform specifications with code',
     long_description=readme,
+    long_description_content_type='text/markdown',
     author='Frank Hammar',
     author_email='frank@frankotron.se',
     url='https://github.com/frankotron/terrastack',
