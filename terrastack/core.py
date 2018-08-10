@@ -93,14 +93,17 @@ class Resource(object):
         }
 
 class Output(object):
-    def __init__(self, output_name, **kwargs):
-        self.output_name = output_name
-        self.kwargs      = kwargs
+    def __init__(self, output_name, output_value, **kwargs):
+        self.output_name  = output_name
+        self.output_value = output_value
+        self.kwargs       = kwargs
     def spec(self):
         return {
-            "output": {
-                self.output_name: self.kwargs,
-            }
+            "output": dict({
+                    "value": self.output_value,
+                },
+                **self.kwargs,
+            )
         }
 
 class Locals(object):
