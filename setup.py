@@ -18,7 +18,7 @@ URL = 'https://github.com/frankotron/terrastack'
 EMAIL = 'frank@frankotron.se'
 AUTHOR = 'Frank Hammar'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.2.0'
+VERSION = '0.3.0'
 
 # What packages are required for this module to be executed?
 REQUIRED = [

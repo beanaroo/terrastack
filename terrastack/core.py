@@ -11,6 +11,8 @@ def merge(source, destination):
         if isinstance(value, dict):
             node = destination.setdefault(key, {})
             merge(value, node)
+        elif isinstance(value, list) and isinstance(destination.get(key), list):
+            destination[key].extend(value)
         else:
             destination[key] = value
     return destination
@@ -59,9 +61,9 @@ class Provider(object):
         self.kwargs = kwargs
     def spec(self):
         return {
-            "provider": {
+            "provider": [{
                 self.provider_name: self.kwargs,
-            }
+            }]
         }
 
 class Data(object):

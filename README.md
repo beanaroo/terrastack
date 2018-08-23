@@ -37,12 +37,14 @@ print(stack.render_json())
             "output": {
                 "value": "some_value"
             },
-            "provider": {
-                "aws": {
-                    "region": "eu-west-1",
-                    "version": "1.30.0"
+            "provider": [
+                {
+                    "aws": {
+                        "region": "eu-west-1",
+                        "version": "1.30.0"
+                    }
                 }
-            },
+            ],
             "resource": {
                 "aws_instance": {
                     "my-instance-1": {
