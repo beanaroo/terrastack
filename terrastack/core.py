@@ -101,11 +101,13 @@ class Output(object):
         self.kwargs       = kwargs
     def spec(self):
         return {
-            "output": dict({
-                    "value": self.output_value,
-                },
-                **self.kwargs,
-            )
+            "output": {
+                self.output_name: dict({
+                        "value": self.output_value,
+                    },
+                    **self.kwargs,
+                )
+            }
         }
 
 class Locals(object):

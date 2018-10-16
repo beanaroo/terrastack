@@ -27,7 +27,7 @@ stack.extend(
     ts.Resource("aws_instance", "my-instance-2",
         ami="some-ami",
     ),
-    ts.Output("my-output", "some_value"),
+    ts.Output("my_output", "some_value"),
 )
 
 print(stack.render_json())
@@ -35,7 +35,9 @@ print(stack.render_json())
 # output:
         {
             "output": {
-                "value": "some_value"
+                "my_output": {
+                    "value": "some_value"
+                }
             },
             "provider": [
                 {
