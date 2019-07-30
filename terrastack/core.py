@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import json, os
-from string import Template
-
-class QMarkTemplate(Template):
-    delimiter = '?'
 
 def merge(source, destination):
     for key, value in source.items():
@@ -17,21 +13,13 @@ def merge(source, destination):
             destination[key] = value
     return destination
 
-def load_environ_vars():
-    return {k: v for k, v in os.environ.items() if k.startswith("VAR_")}
-
 class Stack(object):
-    def __init__(self, initial_components=[], var_dict={}):
+    def __init__(self, initial_components=[]):
         self.components = []
-        self.var_dict = var_dict
         self.extend(*initial_components)
 
     def extend(self, *components):
-        parsed_components = []
-        for component in components:
-            tmpl = QMarkTemplate(json.dumps(component.spec()))
-            parsed_components.append(json.loads(tmpl.substitute(self.var_dict)))
-        self.components.extend(parsed_components)
+        self.components.extend([ component.spec() for component in components ])
 
     def collate_to_dict(self):
         grouped_dict = {}
