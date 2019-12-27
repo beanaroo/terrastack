@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json, os
+from copy import deepcopy
 
 def merge(source, destination):
     for key, value in source.items():
@@ -24,7 +25,7 @@ class Stack(object):
     def collate_to_dict(self):
         grouped_dict = {}
         for component in self.components:
-            merge(component, grouped_dict)
+            merge(deepcopy(component), grouped_dict)
         return grouped_dict
 
     def render_json(self):
